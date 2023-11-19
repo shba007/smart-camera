@@ -3,7 +3,7 @@ import '@tensorflow/tfjs-backend-webgl';
 import '@tensorflow/tfjs-backend-cpu';
 import * as tf from '@tensorflow/tfjs'
 
-import * as cocoSsd from '@tensorflow-models/coco-ssd';
+// import * as cocoSsd from '@tensorflow-models/coco-ssd';
 import * as poseDetection from '@tensorflow-models/pose-detection';
 
 import './index.css'
@@ -13,11 +13,11 @@ const video = document.getElementById("video") as HTMLVideoElement
 const actionBtn = document.getElementById("action-btn")
 const modelBtn = document.getElementById("model")
 const infoCamera = document.getElementById("camera-info")
-const objectsInfo = document.getElementById("objects-info")
+// const objectsInfo = document.getElementById("objects-info")
 const pointsInfo = document.getElementById("points-info")
 const fpsElem = document.getElementById("fps")
 
-let modelObjectDetector: cocoSsd.ObjectDetection | null = null;
+// let modelObjectDetector: cocoSsd.ObjectDetection | null = null;
 let modelPostDetector: poseDetection.PoseDetector | null = null;
 const container = {
 	width: videoContainer?.clientWidth ?? 0,
@@ -68,7 +68,7 @@ async function modelInit() {
 	modelBtn?.classList.replace("bg-yellow-500", "bg-green-600")
 }
 
-function predictObjects(objectPredictions: cocoSsd.DetectedObject[]) {
+/* function predictObjects(objectPredictions: cocoSsd.DetectedObject[]) {
 	for (let artifact of artifacts.objectsHighlight)
 		videoContainer?.removeChild(artifact);
 	for (let artifact of artifacts.objectsInfo)
@@ -114,7 +114,7 @@ function predictObjects(objectPredictions: cocoSsd.DetectedObject[]) {
 		artifacts.objectsHighlight.push(objectHighlight)
 		artifacts.objectsInfo.push(objectInfo)
 	}
-}
+} */
 
 function predictPoses(posePredictions: poseDetection.Pose[]) {
 	for (let artifact of artifacts.pointsHighlight)
@@ -202,6 +202,7 @@ async function enableCam() {
 		</ul>
 		`
 		video.srcObject = stream
+		// @ts-ignore
 		actionBtn!.children[0].src = "/icons/pause.svg"
 		actionBtn?.classList.replace("bg-blue-500", "bg-red-500")
 
