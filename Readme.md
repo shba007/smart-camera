@@ -1,0 +1,4 @@
+- cell phone
+- tv
+- person
+- bird
